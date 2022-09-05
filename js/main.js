@@ -164,7 +164,7 @@ function show() {
 
   for (let i = 0; i < products.length; i++) {
     // console.log(data);
-    data += products[i];
+    //data += products[i];
     data += `<tr class="p-4">
       <td name = "tHead">${i + 1}</td>
   
@@ -193,6 +193,7 @@ function show() {
   }
   // getTotal();
   change();
+  console.log(data);
 }
 
 show();
@@ -287,7 +288,7 @@ function search(value) {
       if (products[i].category.toLowerCase().includes(value.toLowerCase())) {
         data += ` 
       <tr class="p-4">
-      <td>${i + 1}</td>
+      <td>${i}</td>
   
       <td>${products[i].title}</td>
       <td>${products[i].price}</td>
@@ -345,7 +346,7 @@ function sort() {
 
   for (let i = 0; i < products.length; i++) {
     // console.log(data);
-    data += products[i];
+    //data += products[i];
     data += `<tr class="p-4">
     <td name = "tHead">${i + 1}</td>
 
