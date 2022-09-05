@@ -83,7 +83,7 @@ function getTotal() {
 }
 //--------------------------------------------create product-----------------------------
 let products;
-if (localStorage.product != null) {
+if (localStorage.product.length != 0) {
   //34an yzwd 3la ly mwgod
   products = JSON.parse(localStorage.product);
 } else {
@@ -162,10 +162,11 @@ function clearInputs() {
 function show() {
   let data = "";
 
-  for (let i = 0; i < products.length; i++) {
-    // console.log(data);
-    //data += products[i];
-    data += `<tr class="p-4">
+  if (products.length > 0) {
+    for (let i = 0; i < products.length; i++) {
+      // console.log(data);
+      //data += products[i];
+      data += `<tr class="p-4">
       <td name = "tHead">${i + 1}</td>
   
       <td name = "tHead">${products[i].title}</td>
@@ -182,14 +183,14 @@ function show() {
 
     </tr>`;
 
-    deleteAllBtn.innerHTML = `delete All (${products.length})`;
-    document.getElementById("tbody").innerHTML = data;
-  }
+      deleteAllBtn.innerHTML = `delete All (${products.length})`;
+      document.getElementById("tbody").innerHTML = data;
+    }
 
-  if (products.length > 0) {
     deleteAllBtn.style.display = "block";
   } else {
     deleteAllBtn.style.display = "none";
+    document.getElementById("tbody").innerHTML = data;
   }
   // getTotal();
   change();
@@ -208,12 +209,18 @@ function deleteProduct(i) {
   show();
 }
 
-function deleteAll(i) {
-  console.log(i);
-  products.splice(i, products.length);
+//We don't need to add a parameter to deleteAll as in all cases we'll delete all items
+function deleteAll() {
+  //console.log(i);
+  //products.splice(i, products.length);
+  console.log({ products, local: localStorage.product }); // print products array & product item in local storage before delete
+  products.splice(0, products.length);
   localStorage.product = JSON.stringify(products);
+  console.log({ products, local: localStorage.product }); // print products array & product item in local storage after delete to make sure that all items has been deleted
   show();
 }
+
+deleteAllBtn.addEventListener("click", deleteAll);
 
 // ---------------------------------------------function Update------------------------------------
 
