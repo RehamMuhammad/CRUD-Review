@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" href="animate.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>العالميه جروب </title>
+    <link rel="icon" type="image/png" href="imges/logo.png">
+
+    <style>
+        #google_translate_element,
+        .skiptranslate {
+            display: none;
+        }
+
+        body {
+            top: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cont">
+        <aside id="asideBar" class="col-lg-1 col-md-1 col-sm-2">
+
+
+
+            <!-- Rounded switch -->
+            <div class=" p-3">
+                <span class="text-capitalize" id="dark">dark mode</span>
+
+                <label class="switch p-2 mt-2">
+                    <input id="onOff" type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </aside>
+        <div class="col-lg-11 col-md-11 col-sm-10   dash ">
+            <h1 class="mx-1 py-2 text-center">CRUD </h1>
+            <h2 class="mx-1 py-1 text-center text-capitalize">product management system</h2>
+            <div class="container">
+                <div class="my-3">
+                    <input type="text" class="form-control" id="title" placeholder="title   ">
+                </div>
+                <div class="mb-3">
+
+                    <input onkeyup="getTotal()" type="number" class="price form-control " id="price"
+                        placeholder="price">
+                    <input onkeyup="getTotal()" type="number" class=" price form-control " id="taxes"
+                        placeholder="taxes">
+                    <input onkeyup="getTotal()" type="number" class=" price form-control " id="ads" placeholder="ads">
+                    <input onkeyup="getTotal()" type="number" class=" price form-control " id="discount"
+                        placeholder="discount">
+                    <div class=" p-2  w-25 mt-2 total rounded-3 " id="total">total:</div>
+
+                </div>
+                <div class="mb-3">
+                    <input type="number" class="form-control" id="count" placeholder="count">
+                    <input type="email" class="form-control mt-2" id="category" placeholder="category">
+                </div>
+                <button onclick="createProduct()" class="btn btn-primary w-100" id="create">create</button>
+                <div class="mb-3">
+                    <input onkeyup="search(this.value)" type="search" class="form-control mt-2" id="search"
+                        placeholder="search">
+                    <div id="searchResults" class="text-center bg-info m-auto w-25  mt-2"></div>
+                </div>
+
+                <button onclick="searchBy(this.id)" class="btn btn-primary w-25 me-4  " id="searchTitle">search by
+                    title</button>
+
+                <button id="searchCategory" class="btn btn-primary w-25" onclick="searchBy(this.id)">search by
+                    category</button>
+                <button class="btn btn-outline-danger" id="sort">sort</button>
+
+
+                <button onclick="deleteAll(this.value)" id="deleteAll"
+                    class="btn btn-primary deleteAll  mt-2  w-100">Delete
+                    All
+
+                    class="btn btn-danger
+
+                </button>
+
+
+                <table class=" table">
+                    <thead>
+                        <tr>
+
+                            <th class="headTable" name="head" scope="col">id</th>
+
+
+                            <th class="headTable" name="head" scope="col">title</th>
+
+
+
+
+                            <th class="headTable headTablePrice " name="head" scope="col">price </th>
+                            <!-- <span> <button type="button" class="btn  dropdown-toggle dropdown-toggle-split"
+                                    data-toggle="dropdown">
+
+                                </button></span> -->
+
+
+
+
+                            <th class="headTable" name="head" scope="col">taxes </th>
+
+
+                            <th class="headTable" name="head" scope="col">ADs </th>
+
+
+                            <th class="headTable" name="head" scope="col">discount </th>
+
+
+                            <th class="headTable" name="head" scope="col">quantity </th>
+
+
+                            <th class="headTable" name="head" scope="col">total </th>
+
+
+                            <th class="headTable" name="head" scope="col">category </th>
+
+
+                            <th class="headTable" name="head" scope="col">Update </th>
+
+
+                            <th class="headTable" name="head" scope="col">Delete </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="google_translate_element"></div>
+
+
+    <!------------------------------------------- footer--------------------- -->
+    <!-- <div class="container-fluid  ">
+        <div class="container d-flex justify-content-between py-4">
+            <div class="col"><img src="imges/" alt="">
+                <h3>contact</h3>
+                <ul class="list-unstyled">
+                    <li>21 ahmed maher street</li>
+                    <li>01116899720</li>
+                    <li>support @company.com</li>
+                </ul>
+
+            </div>
+            <div class="col">
+                <h3>about the company</h3>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis cumque temporibus cupiditate
+                exercitationem. Sed delectus, impedit ipsum odit mollitia quasi. Nostrum beatae saepe rem, laboriosam
+                tenetur fugit at delectus odit.
+            </div>
+
+
+        </div>
+
+
+    </div> -->
+
+
+    <script src="wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'ar', autoDisplay: false }, 'google_translate_element');
+            var a = document.querySelector("#google_translate_element select");
+            a.selectedIndex = 1;
+            a.dispatchEvent(new Event('change'));
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer async></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src=" js/main.js">
+    </script>
+    <!-- JavaScript Bundle with Popper -->
+
+
+
+</body>
+
+</html>
